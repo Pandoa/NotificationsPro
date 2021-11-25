@@ -59,7 +59,7 @@ Your application needs a GUID. If you don't have one, you can generate one by cl
 </div>
 
 #### 2. Set your GUID in the Plugin Settings  
-Open the Editor and go to `Edit` > `Project Settings...` > `Plugins` > `Notifications Pro`.  
+Open the Editor and go to `Edit` > `Project Settings...` > `Plugins` > `Windows Notification`.  
 Set the Application GUID to your GUID.
 
 <div class="centered">
