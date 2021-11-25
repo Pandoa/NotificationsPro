@@ -117,7 +117,7 @@ Begin Object Class=/Script/BlueprintGraph.K2Node_Event Name="K2Node_Event_3"
    CustomProperties Pin (PinId=FC7DB78746456F6C42049AB9CE390B2F,PinName="then",Direction="EGPD_Output",PinType.PinCategory="exec",PinType.PinSubCategory="",PinType.PinSubCategoryObject=None,PinType.PinSubCategoryMemberReference=(),PinType.PinValueType=(),PinType.ContainerType=None,PinType.bIsReference=False,PinType.bIsConst=False,PinType.bIsWeakPointer=False,PinType.bIsUObjectWrapper=True,LinkedTo=(K2Node_CallFunction_8 7DF511004B8031B6A3AF37A14CEAAB31,),PersistentGuid=00000000000000000000000000000000,bHidden=False,bNotConnectable=False,bDefaultValueIsReadOnly=False,bDefaultValueIsIgnored=False,bAdvancedView=False,bOrphanedPin=False,)
 End Object
 Begin Object Class=/Script/BlueprintGraph.K2Node_CallFunction Name="K2Node_CallFunction_8"
-   FunctionReference=(MemberParent=Class'"/Script/WindowsNotification.WindowsNotificationsLibrary"',MemberName="RegisterApplication")
+   FunctionReference=(MemberParent=Class'"/Script/WindowsNotification.WindowsNotificationLibrary"',MemberName="RegisterApplication")
    NodePosX=-96
    NodePosY=-1472
    NodeGuid=53F3FD8A42EE26D12CFC3AAC6F6A586D
