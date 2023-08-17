@@ -35,7 +35,7 @@
 
 This section will help you to get started using the plugin on the Windows platform.
 
-## Prerequisites
+# Prerequisites
 To be able to show Toast notifications, receive events from them and have them persist in the notification center, 
 your application has to:
 
@@ -47,9 +47,9 @@ your application has to:
 If this is not yet the case, the next section shows you how to do it directly within your game.
 
 
-## Installing and Registering your Application
+# Installing and Registering your Application
 
-#### 1. Getting a GUID
+## 1. Getting a GUID
 Your application needs a GUID. If you don't have one, you can generate one by clicking on the button below:
 
 <div style="text-align:center">
@@ -58,7 +58,7 @@ Your application needs a GUID. If you don't have one, you can generate one by cl
 <input readonly id="ruuid"/>
 </div>
 
-#### 2. Set your GUID in the Plugin Settings  
+## 2. Set your GUID in the Plugin Settings  
 Open the Editor and go to `Edit` > `Project Settings...` > `Plugins` > `Notifications Pro`.  
 Set the Application GUID to your GUID.
 
@@ -66,10 +66,12 @@ Set the Application GUID to your GUID.
 <img src="_images/WindowsSettingsAppGUID.png"/>
 </div>
 
-#### 3. Installing and Registering your Application (for development only)
+## 3. Installing and Registering your Application
+
+### 3.1 The easy way, for development
 
 ?> The following steps are meant to be done for development only. Your installer should take care of them when you
-release your game to the clients.
+release your game to the clients. See 3.2 for the detailed steps.
 
 Add the following code in your application in a place where it will be executed at your app startup.  
 A good place for it is your Game Instance's or your Game Mode's `BeginPlay` method.
@@ -219,10 +221,41 @@ My Super Game   com.mycompany.mygame_12345
 
 
 
+### 3.2 Manually, for release
 
+?> The following steps are meant to be done by an installer automatically during installation.
 
+Start by registering the application in the registry:
+1. Open `regedit`.
+2. Navigate to `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Classes\AppUserModelId` in the registry.
+3. Right click on `AppUserModelId` and select `New > Key` and name the new key your package name, for example `com.myorg.myapp`. You should have the following:
+  <div class="centered">
+  <img alt="Current registry status" src="_images/RegistryPackage.png"/>
+  </div>
+4. In the right panel, right click and select `New > String Value`, set its name to `DisplayName` and its value to the user-friendly displayname for your app.
+5. Right click again and select `New > String Value`, set its name to `CustomActivator` ands its value to `{273baea5-6f36-4ef6-bdf2-37684da796b5}`, don't remove the `{}`. This is the GUID of the COM server used by the plugin.
 
+!> It is not supposed to match with the GUID generated for your application. `{273baea5-6f36-4ef6-bdf2-37684da796b5}` should be used in all the cases.
 
+6. You should now have the following:
+
+  <div class="centered">
+  <img src="_images/RegPackage.png"/>
+  </div>
+
+After these first steps, you should be able to send notification from your app using the package name and see them appear. We just need to register the application to be launched when the notification is clicked.
+
+1. Open `regedit`.
+2. Navigate to `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CLSID` in the registry.
+3. Right click on `CLSID` and select `New > Key` and name the new key with your GUID, following the pattern `{????????-????-????-????-????????????}` with the `?` replaced by your GUID.
+4. Right click on `{????????-????-????-????-????????????}` and select `New > Key` and name the new key `LocalServer32`.
+5. In the right panel, edit the value of the default key with a path to your executable. For example `C:\Program Files\MyApp\MyApp.exe`. You should have the following:
+
+  <div class="centered">
+  <img src="_images/RegLocalServer.png"/>
+  </div>
+
+And that's it. Check that the setup is correctly done by showing a notifcation and clicking on it.
 
 <script>
 setTimeout(() => {
