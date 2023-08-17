@@ -58,7 +58,7 @@ Your application needs a GUID. If you don't have one, you can generate one by cl
 <input readonly id="ruuid"/>
 </div>
 
-#### 2. Set your GUID in the Plugin Settings  
+## 2. Set your GUID in the Plugin Settings  
 Open the Editor and go to `Edit` > `Project Settings...` > `Plugins` > `Windows Notification`.  
 Set the Application GUID to your GUID.
 
